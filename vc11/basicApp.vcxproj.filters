@@ -5,10 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
@@ -18,6 +14,18 @@
     </Filter>
     <Filter Include="Source Files\simulation\particle">
       <UniqueIdentifier>{ec58d9e2-cfda-46c4-98ca-f349de13bd3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utility">
+      <UniqueIdentifier>{540bc56e-b73a-4cf9-a4f4-a1f56087f468}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utility\logging">
+      <UniqueIdentifier>{8a620ec0-84ac-408a-81f8-3184c82f4c11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utility\math">
+      <UniqueIdentifier>{4aee5277-5278-4398-b016-8f7f82365062}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utility\cinder">
+      <UniqueIdentifier>{b9a8fe74-97cd-4cdf-a7c8-e6a06e5d65ff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -36,6 +44,42 @@
     <ClCompile Include="..\src\simulation\SimulationPBF.cpp">
       <Filter>Source Files\simulation</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\utility\logging\ConsoleLogger.cpp">
+      <Filter>Source Files\utility\logging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\utility\logging\FileLogger.cpp">
+      <Filter>Source Files\utility\logging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\utility\logging\Logger.cpp">
+      <Filter>Source Files\utility\logging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\utility\logging\LogManager.cpp">
+      <Filter>Source Files\utility\logging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\utility\logging\LogManagerImplementation.cpp">
+      <Filter>Source Files\utility\logging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\utility\logging\PlainFileLogger.cpp">
+      <Filter>Source Files\utility\logging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\simulation\SimpleSPH.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\utility\cinder\UtilityCinder.cpp">
+      <Filter>Source Files\utility\cinder</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\simulation\SimulationStableFluids.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\simulation\particle\Boundary.cpp">
+      <Filter>Source Files\simulation\particle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\simulation\IncompressibleSPH.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\simulation\IISPH.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\simulation\Simulation.h">
@@ -49,6 +93,66 @@
     </ClInclude>
     <ClInclude Include="..\src\simulation\SimulationPBF.h">
       <Filter>Source Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utility\logging\ConsoleLogger.h">
+      <Filter>Source Files\utility\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utility\logging\FileLogger.h">
+      <Filter>Source Files\utility\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utility\logging\Logger.h">
+      <Filter>Source Files\utility\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utility\logging\logging.h">
+      <Filter>Source Files\utility\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utility\logging\LogManager.h">
+      <Filter>Source Files\utility\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utility\logging\LogManagerImplementation.h">
+      <Filter>Source Files\utility\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utility\logging\LogMessage.h">
+      <Filter>Source Files\utility\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utility\logging\PlainFileLogger.h">
+      <Filter>Source Files\utility\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utility\math\Vector2.h">
+      <Filter>Source Files\utility\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utility\math\VectorBase.h">
+      <Filter>Source Files\utility\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utility\Property.h">
+      <Filter>Source Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\simulation\SimpleSPH.h">
+      <Filter>Source Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utility\math\Vector3.h">
+      <Filter>Source Files\utility\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utility\cinder\UtilityCinder.h">
+      <Filter>Source Files\utility\cinder</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utility\Defines.h">
+      <Filter>Source Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\simulation\SimulationStableFluids.h">
+      <Filter>Source Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\simulation\particle\Boundary.h">
+      <Filter>Source Files\simulation\particle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\simulation\IncompressibleSPH.h">
+      <Filter>Source Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\simulation\IISPH.h">
+      <Filter>Source Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\fluidSim.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

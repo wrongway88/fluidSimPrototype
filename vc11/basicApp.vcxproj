@@ -42,17 +42,20 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\bin</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(CINDER_DIR)\include;$(CINDER_DIR)\boost;C:\Users\Manuel\FH\MSc\Masterarbeit\prototyping\prototyp\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CINDER_DIR)\include;$(CINDER_DIR)\boost;./../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -76,7 +79,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(CINDER_DIR)\include;$(CINDER_DIR)\boost;C:\Users\Manuel\FH\MSc\Masterarbeit\prototyping\prototyp\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CINDER_DIR)\include;$(CINDER_DIR)\boost;./../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
@@ -104,16 +107,48 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\fluidSim.cpp" />
+    <ClCompile Include="..\src\simulation\IISPH.cpp" />
+    <ClCompile Include="..\src\simulation\IncompressibleSPH.cpp" />
     <ClCompile Include="..\src\simulation\ISimulation.cpp" />
+    <ClCompile Include="..\src\simulation\particle\Boundary.cpp" />
     <ClCompile Include="..\src\simulation\particle\Particle.cpp" />
+    <ClCompile Include="..\src\simulation\SimpleSPH.cpp" />
     <ClCompile Include="..\src\simulation\Simulation.cpp" />
     <ClCompile Include="..\src\simulation\SimulationPBF.cpp" />
+    <ClCompile Include="..\src\simulation\SimulationStableFluids.cpp" />
+    <ClCompile Include="..\src\utility\cinder\UtilityCinder.cpp" />
+    <ClCompile Include="..\src\utility\logging\ConsoleLogger.cpp" />
+    <ClCompile Include="..\src\utility\logging\FileLogger.cpp" />
+    <ClCompile Include="..\src\utility\logging\Logger.cpp" />
+    <ClCompile Include="..\src\utility\logging\LogManager.cpp" />
+    <ClCompile Include="..\src\utility\logging\LogManagerImplementation.cpp" />
+    <ClCompile Include="..\src\utility\logging\PlainFileLogger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\fluidSim.h" />
+    <ClInclude Include="..\src\simulation\IISPH.h" />
+    <ClInclude Include="..\src\simulation\IncompressibleSPH.h" />
     <ClInclude Include="..\src\simulation\ISimulation.h" />
+    <ClInclude Include="..\src\simulation\particle\Boundary.h" />
     <ClInclude Include="..\src\simulation\particle\Particle.h" />
+    <ClInclude Include="..\src\simulation\SimpleSPH.h" />
     <ClInclude Include="..\src\simulation\Simulation.h" />
     <ClInclude Include="..\src\simulation\SimulationPBF.h" />
+    <ClInclude Include="..\src\simulation\SimulationStableFluids.h" />
+    <ClInclude Include="..\src\utility\cinder\UtilityCinder.h" />
+    <ClInclude Include="..\src\utility\Defines.h" />
+    <ClInclude Include="..\src\utility\logging\ConsoleLogger.h" />
+    <ClInclude Include="..\src\utility\logging\FileLogger.h" />
+    <ClInclude Include="..\src\utility\logging\Logger.h" />
+    <ClInclude Include="..\src\utility\logging\logging.h" />
+    <ClInclude Include="..\src\utility\logging\LogManager.h" />
+    <ClInclude Include="..\src\utility\logging\LogManagerImplementation.h" />
+    <ClInclude Include="..\src\utility\logging\LogMessage.h" />
+    <ClInclude Include="..\src\utility\logging\PlainFileLogger.h" />
+    <ClInclude Include="..\src\utility\math\Vector2.h" />
+    <ClInclude Include="..\src\utility\math\Vector3.h" />
+    <ClInclude Include="..\src\utility\math\VectorBase.h" />
+    <ClInclude Include="..\src\utility\Property.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

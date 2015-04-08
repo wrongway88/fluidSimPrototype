@@ -35,6 +35,10 @@ void SimulationPBF::drawParams()
 {
 }
 
+void SimulationPBF::reset()
+{
+}
+
 std::vector<Particle> SimulationPBF::getNeighbours(Particle& particle, std::vector<Particle>& particles)
 {
 	std::vector<Particle> result;
@@ -43,7 +47,8 @@ std::vector<Particle> SimulationPBF::getNeighbours(Particle& particle, std::vect
 	{
 		if(particles[i] != particle)
 		{
-			if(distanceKernel(particle.getPosition().distance(particles[i].getPosition())))
+			float distance = (particle.getPosition() - particles[i].getPosition()).getLength();
+			if(distanceKernel(distance, m_h))
 			{
 				result.push_back(particles[i]);
 			}
@@ -53,15 +58,15 @@ std::vector<Particle> SimulationPBF::getNeighbours(Particle& particle, std::vect
 	return result;
 }
 
-ci::Vec2f SimulationPBF::getConstraintGradient(const float restDensity, Particle& particle, std::vector<Particle>& neighbours)
+Vec2f SimulationPBF::getConstraintGradient(const float restDensity, Particle& particle, std::vector<Particle>& neighbours)
 {
-	ci::Vec2f result(0.0f, 0.0f);
+	Vec2f result(0.0f, 0.0f);
 
 	for(unsigned int i = 0; i < neighbours.size(); i++)
 	{
 		if(particle != neighbours[i])
 		{
-			result += distanceKernelGradient((particle.getPosition() - neighbours[i].getPosition()).length(), m_h);
+			result += distanceKernelGradient((particle.getPosition() - neighbours[i].getPosition()).getLength(), m_h);
 		}
 	}
 
@@ -81,7 +86,7 @@ float SimulationPBF::distanceKernel(const float distance, const float h)
 	return std::pow(a, b);
 }
 
-ci::Vec2f distanceKernelGradient(const float distance, const float h)
+Vec2f SimulationPBF::distanceKernelGradient(const float distance, const float h)
 {
 	float exponent = distance*distance - h*h;
 	float pi = 3.1415926f;
@@ -92,12 +97,12 @@ ci::Vec2f distanceKernelGradient(const float distance, const float h)
 	float b = std::powf(315.0f/pi, exponent);
 	float c = std::log(315.0f/(pi * h_4));
 
-	
+
 	// d W/d h
 	float d = -2.0f * std::pow((315.0f / pi), exponent);
 	float e = std::pow(1.0f/h_4, exponent);
 	float f = 2.0f * distance * distance + h*h*(std::log(315.0f / pi) - 2.0f) + h*h * std::log(1.0f/h_4);
 
 
-	return ci::Vec2f(a*b*c, d*e*f*(1.0f/h));
+	return Vec2f(a*b*c, d*e*f*(1.0f/h));
 }

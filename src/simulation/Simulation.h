@@ -3,6 +3,9 @@
 
 #include <vector>
 
+#include "utility/math/Vector2.h"
+#include "utility/math/Vector3.h"
+
 #include "cinder/params/Params.h"
 #include "cinder/app/App.h"
 
@@ -16,7 +19,7 @@ public:
 	Simulation();
 	~Simulation();
 
-	virtual void setup();
+	virtual void setup(float containerWidth = 1920.0f, float containerHeight = 1080.0f);
 	virtual void update(const float deltaTime);
 	virtual void draw();
 
@@ -24,16 +27,21 @@ public:
 
 	virtual void drawParams();
 
+	virtual void reset();
+
 private:
 	void updateDensity(const unsigned int startIndex, const unsigned int endIndex);
 	void updateForces(const unsigned int startIndex, const unsigned int endIndex);
+	void Vec(const unsigned int startIndex, const unsigned int endIndex);
 	void reposition(const float deltaTime, const unsigned int startIndex, const unsigned int endIndex);
 
 	std::vector<Particle> getNeighbours(Particle& particle, std::vector<Particle>& particles);
 	float distanceKernel(const float distance);
+	Vec2f distanceKernelGradient(const Vec2f& pos0, const Vec2f& pos1);
+
 	float distanceKernelSpiky(const float distance);
 
-	void reset();
+	void doReset();
 
 	std::vector<Particle> m_particles;
 
@@ -52,9 +60,12 @@ private:
 
 	float m_maxDensity;
 
-	ci::Vec2f m_gravity;
+	Vec2f m_gravity;
 
-	std::vector<ci::Vec3f> m_walls;
+	std::vector<Vec3f> m_walls;
+
+	int m_verticalInitParticleCount;
+	int m_horizontalInitParticleCount;
 };
 
 #endif // SIMULATION_H
